@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LocalMart</title>
+	<link rel="shortcut icon" type="images\png" href="images\logo.png"> 
+	<!--  css dependencies start  -->
+
+    <!-- bootstrap five css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- bootstrap-icons css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- nice select css -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- slick css -->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <!-- odometer css -->
+    <link rel="stylesheet" href="assets/css/odometer.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--  / css dependencies end  -->
+
+    <!-- main css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="chatbot/chatbot.css">
+
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body style="background-color: #03211B;">
+
+<!--  Preloader  -->
+    <div class="preloader">
+        <span class="loader"></span>
+    </div>
+
+    <!--header-section start-->
+    <header class="header-section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-xl nav-shadow" id="#navbar">
+                        <a class="navbar-brand" href="./"><img src="images/logo.png" width = "200px" class="logo" alt="logo"></a>
+                        <a class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="bi bi-list"></i>
+                        </a>
+
+                        <div class="collapse navbar-collapse ms-auto " id="navbar-content">
+                            <div class="main-menu">
+                                <ul class="navbar-nav mb-lg-0 mx-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about-us.html">About us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.php">Contact us</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sign in </a>
+                                        <ul class="dropdown-menu">
+
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="sign-in.php">
+                                            Sign in as Customer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="sign-in-store.php">
+                                            Sign in as Store Owner
+                                        </a>
+                                    </li>
+                                </ul>
+                                    
+                                
+                            </li>
+                                </ul>
+                                <div class="nav-right d-none d-xl-block">
+                                    <div class="nav-right__search">
+                                        <a href="javascript:void(0)" class="nav-right__search-icon btn_theme icon_box btn_bg_white"> <i class="bi bi-search"></i> <span></span> </a>    
+                                        
+
+                                    </div>
+                                    <div class="nav-right__search-inner">
+                                        <div class="nav-search-inner__form">
+                                            <form method="POST" id="search" class="inner__form">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Search" required>
+                                                    <button type="submit" class="search_icon"><i class="bi bi-search"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offcanvas More info-->
+    <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight">
+        <div class="offcanvas-body custom-nevbar">
+            <div class="row">
+                <div class="col-md-7 col-xl-8">
+                    <div class="custom-nevbar__left">
+                        <button type="button" class="close-icon d-md-none ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x"></i></button>
+                        <ul class="custom-nevbar__nav mb-lg-0">
+                            <li class="menu_item dropdown">
+                                <a class="menu_link dropdown-toggle" href="about-us.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                                <ul class="dropdown-menu">
+                                </ul>
+                            </li>
+                             <li class="menu_item">
+                                <a class="menu_link" href="contact.php">Contact us</a>
+                            </li>
+                            <li class="menu_item dropdown">
+                                <a class="menu_link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sign in </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="sign-in.php">
+                                            Sign in as Customer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="">
+                                            Sign in as Store Owner
+                                        </a>
+                                    </li>
+                                </ul>
+                                    
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 col-xl-4">
+                    <div class="custom-nevbar__right">
+                        <div class="custom-nevbar__top d-none d-md-block">
+                            <button type="button" class="close-icon ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x"></i></button>
+                            <div class="custom-nevbar__right-thumb mb-auto">
+                                <img src="images/logo.png" alt="logo">
+                            </div>
+                        </div>
+                        <ul class="custom-nevbar__right-location">
+                            <li>
+                              
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header-section end-->
+    <!-- hero section start-->
+    
+    <section class="hero hero--secondary">
+    	<div class="container">
+    		<div class="row gy-5 gy-lg-0 align-items-center justify-content-center justify-content-lg-between">
+    			<div class="col-12 col-lg-7 col-xxl-6">
+    				<div class="section__content">
+    					<span class="section__content-sub-title headingFour wow fadeInDown" data-wow-duration="0.8s"> </span>
+    					<h1 class="section__content-title display-3 wow fadeInUp" data-wow-duration="0.8s">Your Trustworthy Partner Tailored For Your Foodwaste</h1>
+                        <p class ="section__content-text wow fadeInDown" data-wow-duration="1s">
+                            Embrace the essence of community and support local businesses! By choosing to shop local, you're not just making a purchase – you're investing in the heartbeat of your neighborhood. Discover unique treasures, foster connections, and contribute to the growth of your local economy. Let's build a thriving community together – Shop Local, Go Local!
+                        </p>
+                        <div class="btn-group mt_40 wow fadeInUp" data-wow-duration="0.8s">
+                            
+                        </div>
+
+
+
+    				</div>
+
+    			</div>
+    			<div class="col-12 col-md-9 col-lg-5 col-xxl-5">
+    				<div class="hero-- secondary__thumb wow fadeInUp" data-wow-duration="0.8s">
+    					<img src="images/image2.png">
+    				</div>
+
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="Why-choose section">
+        <div class="container">
+            <div class="row align-items-center justify-content-center justify-content-lg-between gy-5 gy-lg-0">
+                <div class="col-12 col-sm-8 col-lg-6 col-xxl-5 order-1 order-lg-0">
+                    <div class="how-works__thumbs previewShapeY unset-xxl-left me-4 me-xxl-0 wow fadeInDown" data-wow-duration=“0.8s”>
+                        <img src="images/family.jpg" alt="image" width="800px" height="150px">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 col-xxl-6">
+                    <div class="section_content">
+                        <span class="section__content-sub-title headingFour wow fadeInDown" data-wow-duration="0.8s" style="color: white;">
+
+                            <img src="images/about-us.png" alt="vector" width="80px" height="50px" 
+                            align="center" style="color: white;">
+                            Why Choose Us
+                            </span>
+                            <p>
+                            <br>
+                            <br>
+                            <h2 class="section__content-title wow fadeInUp" data-wow-duration="0.8s" style="color: white;">
+                                User-Friendly Grocery Website
+                            </h2>
+                            <p>
+                            <br>
+                            <br>
+                            <h5 class="section_content-text wow fadeInDown" data-wow-duration="0.8s" style="color: white;"> Welcome to LocalMart, your one-stop destination for all your grocery needs! At LocalMart, we understand the importance of convenience and quality in your shopping experience. As avid believers in the joy of fresh, wholesome ingredients, we have curated a diverse selection of products to meet your everyday needs.
+
+                            Our journey began with a simple yet powerful vision: to redefine the way you shop for groceries. We are committed to providing a seamless and enjoyable online shopping experience, allowing you to browse through a wide range of products from the comfort of your home.</h5>
+                                
+                            </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>
+
+    <section class ="section faq-section" id="faqa">
+        <div class ="container">
+            <div class ="row justify-content-center">
+                <div class="col-12 col-lg 7 col-xxl-6">
+                    <div class ="section__header">
+                        <span class ="section_header-sub-title headingFour wow fadeInDown" data-wow-duration="0.8s">
+                            
+                            <img src="images/faq.png" alt="vector" width="50px" height="30px">
+
+                        </span>
+                        <h2 class="section__header-title wow fadeInUp" data-wow-duration="0.8s">
+                            Find Answers to Common Questions
+                            
+                        </h2>
+                        <p class ="section__header-content wow fadeInDown" data-wow-duration="0.8s">
+                            We have complied a list of frequently asked questions to provide you with
+                            quick and healthy answers. If you have a message that is not addressed below 
+                            contact us.
+                        </p>
+
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="row justify-content-center gy-4 gy-lg-0">
+                <div class="col-12 col-lg-10 col-xxl-8">
+                    <div class="accordion wow fadeInDown" data-wow-duration="0.8s" id ="faq">
+                        <div class="accordion-item accordion_bg">
+                            <h5 class ="accordion-header">
+                                <button class="accordion-button" type= "button" data-bs-toggle="collapse" data-bs-target="#faq-accordion-1" aria-expanded="true" aria-controls="faq-accordion-1">
+                                    What does LocalMart Do?
+                                    
+                                </button>
+                                
+                            </h5>
+                            <div class ="accordion-collapse collapse show" id="faq-accordion-1" data-bs-parent="#faq">
+                                <div class="accordion-body">
+                                    <p class="mb-0">
+                                        LocalMart is a grocery platform for local sellers. We want to tackle the everlasting problem of food waste
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="accordion-item">
+                            <h5 class ="accordion-header">
+                                <button class="accordion-button" type= "button" data-bs-toggle="collapse" data-bs-target="#faq-accordion-2" aria-expanded="true" aria-controls="faq-accordion-2">
+                                    How to contact us
+                                    
+                                </button>
+                                
+                            </h5>
+                            <div class ="accordion-collapse collapse show" id="faq-accordion-2" data-bs-parent="#faq">
+                                <div class="accordion-body">
+                                    <p class="mb-0">
+                                        On the Navigation bar, Click "Contact us" then you can fill out the form and we will respond to you by email ASAP.
+                                    </p>
+                                </div>
+                            </div>
+                        
+                    </div>
+                    <div class="accordion-item">
+                            <h5 class ="accordion-header">
+                                <button class="accordion-button" type= "button" data-bs-toggle="collapse" data-bs-target="#faq-accordion-3" aria-expanded="true" aria-controls="faq-accordion-3">
+                                    How do I change my email?
+                                    
+                                </button>
+                                
+                            </h5>
+                            <div class ="accordion-collapse collapse show" id="faq-accordion-3" data-bs-parent="#faq">
+                                <div class="accordion-body">
+                                    <p class="mb-0">
+                                        You can update your delivery address through your account settings. Click on "My Profile" and update your "email" Here, you can add, remove, or edit your profile details. Make sure to save any changes before you place your next order.
+                                    </p>
+                                </div>
+                            </div>
+                    
+                </div>
+                <div class="accordion-item">
+                            <h5 class ="accordion-header">
+                                <button class="accordion-button" type= "button" data-bs-toggle="collapse" data-bs-target="#faq-accordion-4" aria-expanded="true" aria-controls="faq-accordion-4">
+                                    How to rate and give reviews to stores?
+                                    
+                                </button>
+                                
+                            </h5>
+                            <div class ="accordion-collapse collapse show" id="faq-accordion-4" data-bs-parent="#faq">
+                                <div class="accordion-body">
+                                    <p class="mb-0">
+                                        You can click the "Shop by Location" and select the stores location. You can click "Rate / Review store" on the store and write a review for them.
+                                    </p>
+                                </div>
+                            </div>
+                
+            </div>
+        </div>
+
+        
+    </section><p><br><br><br>
+
+
+
+  <center><div class="chatbot" style="padding: 30px; background-color: #03211B;">
+ <p style="font-size: 23px; text-align: center; color:white;">Localmart Chat Bot Support </p>
+
+    
+ <div id="container" class="container">
+    
+
+        <div id="chat" class="chat">
+            <div id="messages" class="messages"></div>
+            <input id="input" type="text" placeholder="Say something..." autocomplete="off" />
+        </div>
+    </div>
+</div></center>
+    
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row section gy-5 gy-xl-0">
+                <div class="col-12 col-sm-6 col-xl-3">
+                <div class="about-company wow fadeinLeft" data-wow-duration="0.8s">
+                    <div class="footer__logo mb-4">
+                        <a href="">
+                            <img src="images/logo.png" alt="logo" width="200px">
+                        </a>
+                        
+                    </div>
+                    <p>
+                        Welcome to LocalMart - Your Trustworthy Partner Tailored for your foodwaste
+                    </p>
+                    <div class="social mt_32">
+                        <a href="" class="btn_theme social_box">
+                            <i class="bi bi-facebook">
+                                
+                            </i>
+                            
+                        </a>
+
+
+                        <a href="" class="btn_theme social_box">
+                            <i class="bi bi-instagram">
+                                
+                            </i>
+                            
+                        </a>
+
+
+                        <a href="" class="btn_theme social_box">
+                            <i class="bi bi-twitter">
+                                
+                            </i>
+                            
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="footer__contacts ms-sm-4 ms-xl-0 wow fadeInUp" data-wow-duration="0.8s">
+                    <h4 class="footer__title mb-4">
+                        Contacts
+                    </h4>
+                    <div class="footer__content">
+                        <a href="">
+                            <span class="btn_theme social_box">
+                                <i class="bi bi-telephone-plus">
+                                    <span>
+                                        075757575754 
+                                    </span>
+                                </i>
+                                
+                            </span>
+                        </a>
+                        <a href="">
+                            <span class="btn_theme social_box">
+                                <i class="bi bi-envelope-open">
+                                    <span>
+                                        dd@gmail.com
+                                    </span>
+                                    
+                                </i>
+                                
+                            </span>
+                        </a>
+
+                        <a>
+                            <span class="btn_theme social_box">
+                                <i class="bi bi-geo-alt">
+                                    <span>
+                                        United Kingdom
+                                    </span>
+                                    
+                                </i>
+                            </span>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="newsletter wow fadeInDown" data-wow-duration="0.8s">
+                    <h4 class="footer__title mb-4">
+                        Newsletter
+                    </h4>
+                    <p class ="mb_32">
+                        Subscribe to our newletter and get the latest updates
+                    </p>
+                    <form method="POST" id="frmSubscribe" autocomplete="off" class="newsletter__content-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="sMail" name="sMail" placeholder="Enter your mail" required>
+                            <button type="submit" class="emailSubscribe btn_theme btn_theme_active" name="emailSubscribe" id="emailSubscribe">
+                                <i class="bi bi-cursor">
+                                    <span>
+                                        
+                                    </span>
+                                </i>
+                                
+                            </button>
+                        </div>
+                        <span id="subscriberMsg">
+                            
+                        </span>
+                        
+                    </form>
+                </div>
+                
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="quick-link ms-sm-4 ms-xl-0 wow fadeinRight" data-wow-duration="0.8s">
+                    <h4 class="footer__title mb-4">
+                        QUICKLINK
+                    </h4>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about-us.html">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.php">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-12">
+                <div class="footer__copyright">
+                    <p class="copyright text-center">
+                        Copyright
+                        <span id="copyYear">
+                            
+                        </span>
+                        <a href="" class="secondary_color">
+                            LocalMart
+                        </a>
+                        <ul class="footer__copyright-condition">
+                            <li>
+                                <a href="">
+                                    Help and Support
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Privacy and Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Terms and Conditions
+                                </a>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </footer>
+<!-- jquery -->
+    <script type="text/javascript" src="chatbot/chatbot.js" ></script>
+<script type="text/javascript" src="chatbot/constants.js" ></script> 
+<script type="text/javascript" src="chatbot/speech.js" ></script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {  
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+    </script>
+    <script src="assets/js/jquery-3.6.3.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="assets/js/plugins.js"></script>
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    
+
+</body>
+</html>

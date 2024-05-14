@@ -1,0 +1,680 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+$user_id = $_SESSION['user_id'];
+
+if(!isset($user_id)){
+   header('location:sign-in.php');
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>LocalMart</title>
+   <link rel="shortcut icon" type="images\png" href="images\logo.png"> 
+   <!--  css dependencies start  -->
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+
+    <!-- bootstrap five css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- bootstrap-icons css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- nice select css -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- slick css -->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <!-- odometer css -->
+    <link rel="stylesheet" href="assets/css/odometer.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--  / css dependencies end  -->
+
+    <!-- main css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    
+
+     <style>
+/* About Section */
+.about {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.about .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about .box {
+    text-align: center;
+    padding: 30px;
+    margin: 0 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.about .box:hover {
+    transform: translateY(-10px);
+}
+
+.about .box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.about .box h3 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #333;
+    animation: slideInLeft 1s ease-in-out;
+}
+
+.about .box p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.6;
+    animation: slideInRight 1s ease-in-out;
+}
+
+.about .box .btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.about .box .btn:hover {
+    background-color: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Reviews Section */
+.reviews {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.reviews .title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2em;
+    color: #333;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.reviews .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.reviews .box {
+    text-align: center;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.reviews .box:hover {
+    transform: translateY(-10px);
+}
+
+.reviews .box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.reviews .box p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.reviews .box .stars {
+    margin: 20px 0;
+}
+
+.reviews .box .stars i {
+    color: #FFD700;
+    font-size: 1.2em;
+}
+
+.reviews .box h3 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+    </style>
+
+</head>
+ <body style="background-color: #03211B;">
+
+<!--  Preloader  -->
+    <div class="preloader">
+        <span class="loader"></span>
+    </div>
+
+    <!--header-section start-->
+    <header class="header-section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-xl nav-shadow" id="#navbar">
+                        <a class="navbar-brand" href="./"><img src="images/logo.png" width = "200px" class="logo" alt="logo"></a>
+                        <a class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="bi bi-list"></i>
+                        </a>
+
+                        <div class="collapse navbar-collapse ms-auto " id="navbar-content">
+                            <div class="main-menu">
+                                <ul class="navbar-nav mb-lg-0 mx-auto">
+                                     
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about-us.html">About us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.php">Contact us</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sign in </a>
+                                        <ul class="dropdown-menu">
+
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="sign-in.php">
+                                            Sign in as Customer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="sign-in-store.php">
+                                            Sign in as Store Owner
+                                        </a>
+                                    </li>
+                                </ul>
+                                    
+                                
+                            </li>
+                                </ul>
+                                <div class="nav-right d-none d-xl-block">
+                                    <div class="nav-right__search">
+                                        <a href="javascript:void(0)" class="nav-right__search-icon btn_theme icon_box btn_bg_white"> <i class="bi bi-search"></i> <span></span> </a>    
+                                        
+
+                                    </div>
+                                    <div class="nav-right__search-inner">
+                                        <div class="nav-search-inner__form">
+                                            <form method="POST" id="search" class="inner__form">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Search" required>
+                                                    <button type="submit" class="search_icon"><i class="bi bi-search"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offcanvas More info-->
+    <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight">
+        <div class="offcanvas-body custom-nevbar">
+            <div class="row">
+                <div class="col-md-7 col-xl-8">
+                    <div class="custom-nevbar__left">
+                        <button type="button" class="close-icon d-md-none ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x"></i></button>
+                        <ul class="custom-nevbar__nav mb-lg-0">
+                            
+                            <li class="menu_item dropdown">
+                                <a class="menu_link dropdown-toggle" href="about-us.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                                <ul class="dropdown-menu">
+                                </ul>
+                            </li>
+                             <li class="menu_item">
+                                <a class="menu_link" href="contact.php">Contact us</a>
+                            </li>
+                            <li class="menu_item dropdown">
+                                <a class="menu_link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sign in </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="sign-in.php">
+                                            Sign in as Customer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" class="active" href="">
+                                            Sign in as Store Owner
+                                        </a>
+                                    </li>
+                                </ul>
+                                    
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 col-xl-4">
+                    <div class="custom-nevbar__right">
+                        <div class="custom-nevbar__top d-none d-md-block">
+                            <button type="button" class="close-icon ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x"></i></button>
+                            <div class="custom-nevbar__right-thumb mb-auto">
+                                <img src="images/logo.png" alt="logo">
+                            </div>
+                        </div>
+                        <ul class="custom-nevbar__right-location">
+                            <li>
+                              
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header-section end-->
+    <!-- hero section start-->
+    
+    <section class="hero hero--secondary">
+      <div class="container">
+         <div class="row gy-5 gy-lg-0 align-items-center justify-content-center justify-content-lg-between">
+            <div class="col-12 col-lg-7 col-xxl-6">
+               <div class="section__content">
+                  
+                        
+                        </section>
+               </div>
+
+
+
+<section class="about">
+
+   <div class="row">
+
+      <div class="box">
+         <img src="images/about1-bg.gif" alt="">
+         <h3>Why Choose Us?</h3>
+         <p>Our store is dedicated to providing you with the freshest produce, finest meats, and a wide selection of pantry essentials. Whether you're cooking up a family feast or grabbing a quick snack on the go, we've got you covered. With a commitment to exceptional service and a passion for supporting our local community, shopping at LocalMart is more than just a trip to the store – it's an experience. Visit us today and let us help you make every meal memorable!</p>
+         <a href="contact.php" class="btn">Contact Us</a>
+      </div>
+
+      <div class="box">
+         <img src="images/about2-bg.gif" alt="">
+         <h3>What We Provide?</h3>
+         <p>From farm-fresh produce to premium meats, from pantry staples to specialty items, we strive to offer everything you need for delicious and nutritious meals. Our shelves are stocked with a diverse range of products, including organic and locally sourced options, ensuring there's something for every preference and dietary requirement. With a focus on freshness, variety, and affordability, we're your one-stop shop for all things food. Shop with us and experience the difference!</p>
+         <a href="shop.php" class="btn">our shop</a>
+      </div>
+
+   </div>
+
+</section>
+
+<center><section class="reviews">
+
+   <h1 class="title">Client Reviews</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <img src="images/pic-1.png" alt="">
+         <p>I like the stores in Roehampton and Croydon</p>
+         <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+         </div>
+         <h3>Annie</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/pic-2.png" alt="">
+         <p>I like the discount section where you add an percentage to the products.</p>
+         <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+         </div>
+         <h3>Chuck</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/pic-3.png" alt="">
+         <p>Easy to set up product listings, the rate process is nice and hides anonymously</p>
+         <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+         </div>
+         <h3>SPAR - Shop Owner</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/pic-4.png" alt="">
+         <p>Easy Process for signing up as an customer</p>
+         <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+         </div>
+         <h3>Tyrone</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/pic-5.png" alt="">
+         <p>Nice Support system - includes chat bot. Has alot of variety of products</p>
+         <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+         </div>
+         <h3>Jazz</h3>
+      </div>
+
+     
+
+   </div>
+
+</section></center>
+
+
+
+
+
+
+
+
+  <footer class="footer">
+        <div class="container">
+            <div class="row section gy-5 gy-xl-0">
+                <div class="col-12 col-sm-6 col-xl-3">
+                <div class="about-company wow fadeinLeft" data-wow-duration="0.8s">
+                    <div class="footer__logo mb-4">
+                        <a href="">
+                            <img src="images/logo.png" alt="logo" width="200px">
+                        </a>
+                        
+                    </div>
+                    <p>
+                        Welcome to LocalMart - Your trust worthy partner Tailored for your foodwaste
+                    </p>
+                    <div class="social mt_32">
+                        <a href="" class="btn_theme social_box">
+                            <i class="bi bi-facebook">
+                                
+                            </i>
+                            
+                        </a>
+
+
+                        <a href="" class="btn_theme social_box">
+                            <i class="bi bi-instagram">
+                                
+                            </i>
+                            
+                        </a>
+
+
+                        <a href="" class="btn_theme social_box">
+                            <i class="bi bi-twitter">
+                                
+                            </i>
+                            
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="footer__contacts ms-sm-4 ms-xl-0 wow fadeInUp" data-wow-duration="0.8s">
+                    <h4 class="footer__title mb-4">
+                        Contacts
+                    </h4>
+                    <div class="footer__content">
+                        <a href="">
+                            <span class="btn_theme social_box">
+                                <i class="bi bi-telephone-plus">
+                                    <span>
+                                        075757575754 
+                                    </span>
+                                </i>
+                                
+                            </span>
+                        </a>
+                        <a href="">
+                            <span class="btn_theme social_box">
+                                <i class="bi bi-envelope-open">
+                                    <span>
+                                        dd@gmail.com
+                                    </span>
+                                    
+                                </i>
+                                
+                            </span>
+                        </a>
+
+                        <a>
+                            <span class="btn_theme social_box">
+                                <i class="bi bi-geo-alt">
+                                    <span>
+                                        United Kingdom
+                                    </span>
+                                    
+                                </i>
+                            </span>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="newsletter wow fadeInDown" data-wow-duration="0.8s">
+                    <h4 class="footer__title mb-4">
+                        Newsletter
+                    </h4>
+                    <p class ="mb_32">
+                        Subscribe to our newletter and get the latest updates
+                    </p>
+                    <form method="POST" id="frmSubscribe" autocomplete="off" class="newsletter__content-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="sMail" name="sMail" placeholder="Enter your mail" required>
+                            <button type="submit" class="emailSubscribe btn_theme btn_theme_active" name="emailSubscribe" id="emailSubscribe">
+                                <i class="bi bi-cursor">
+                                    <span>
+                                        
+                                    </span>
+                                </i>
+                                
+                            </button>
+                        </div>
+                        <span id="subscriberMsg">
+                            
+                        </span>
+                        
+                    </form>
+                </div>
+                
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="quick-link ms-sm-4 ms-xl-0 wow fadeinRight" data-wow-duration="0.8s">
+                    <h4 class="footer__title mb-4">
+                        QUICKLINK
+                    </h4>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about-us.html">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.php">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-12">
+                <div class="footer__copyright">
+                    <p class="copyright text-center">
+                        Copyright
+                        <span id="copyYear">
+                            
+                        </span>
+                        <a href="" class="secondary_color">
+                            LocalMart
+                        </a>
+                        <ul class="footer__copyright-condition">
+                            <li>
+                                <a href="">
+                                    Help and Support
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Privacy and Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Terms and Conditions
+                                </a>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </footer>
+
+
+    
+    <script src="assets/js/jquery-3.6.3.min.js"></script>
+    
+    <script src="assets/js/plugins.js"></script>
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    
+
+</body>
+</html>

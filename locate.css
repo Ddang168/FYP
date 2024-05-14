@@ -1,0 +1,29 @@
+/* Style for the dropdown */
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Style for the dropdown arrow */
+.form-group select + label::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+/* Style for the form-group label */
+.form-group label {
+    position: relative;
+}
+
+/* Style for the selected option */
+.form-group select option:checked {
+    background-color: #f0f0f0;
+}
